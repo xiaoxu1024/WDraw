@@ -222,6 +222,18 @@ export default {
   border-radius: 12px 0 0 12px; /* 左侧圆角 */
 }
 
+@media (max-width: 768px) {
+  /* 移动端样式 */
+  .sidebar-container {
+    width: 100%;
+    height: 40%;
+    top: unset;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
 /* 内容区域 */
 .sidebar-body {
   flex: 1;
