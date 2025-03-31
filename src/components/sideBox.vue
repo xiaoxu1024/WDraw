@@ -226,7 +226,7 @@ export default {
   /* 移动端样式 */
   .sidebar-container {
     width: 100%;
-    height: 40%;
+    height: 40vh;
     top: unset;
     left: 0;
     right: 0;
