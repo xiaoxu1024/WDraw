@@ -2,13 +2,15 @@
   <div class="color_bar">
     <div
       class="color_base"
+      :class="{ selected: selectedColor == item }"
       :style="{ background: item }"
       v-for="item in ColorArr"
       :key="item"
+      @click="onClick(item)"
     ></div>
-    <div class="color_base select">
+    <div class="color_base select" :class="{ selected: !hasBaseColor }">
       <img src="@/assets/color.svg">
-      <input ref="color" class="color_picker" type="color">
+      <input ref="color" class="color_picker" type="color" :value="selectedColor" @input="onColor">
     </div>
   </div>
 </template>
@@ -25,9 +27,40 @@ const ColorArr = [
 ]
 export default {
   name: 'ColorBar',
+  props: {
+    value: {
+      type: String,
+      default: ''
+    }
+  },
   data() {
     return {
       ColorArr,
+      selectedColor: ''
+    }
+  },
+  computed: {
+    hasBaseColor() {
+      return ColorArr.find((color) => color == this.selectedColor)
+    }
+  },
+  watch: {
+    value: {
+      immediate: true,
+      handler(val) {
+        this.selectedColor = val
+      }
+    }
+  },
+  methods: {
+    onClick(item) {
+      this.$emit('input', item)
+      this.$emit('change', item)
+    },
+    onColor() {
+      const color = this.$refs?.color?.value || this.color
+      this.$emit('input', color)
+      this.$emit('change', color)
     }
   }
 }
@@ -79,5 +112,9 @@ export default {
       padding: 0; 
     }
   }
+}
+.selected {
+  transform: scale(1.2);
+  border-color: #aaa !important;
 }
 </style>

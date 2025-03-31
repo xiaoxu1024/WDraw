@@ -5,7 +5,7 @@
         <div class="sidebar-body">
           <!-- 颜色 -->
           <Layout title="颜色">
-            <ColorBar />
+            <ColorBar v-model="color" @change="onChange" />
           </Layout>
 
           <!-- 形状 -->
@@ -118,6 +118,7 @@ export default {
   },
   methods: {
     refresh() {
+      this.color = this.cell?.fill
       this.text = this.getText()
       this.size.width = this.cell?.width
       this.size.height = this.cell?.height
@@ -141,7 +142,7 @@ export default {
     },
     getText() {
       let text = ''
-      const children = this.cell.children || []
+      const children = this.cell?.children || []
 
       for (const child of children) {
         if (child.tag == 'Text') {
@@ -164,6 +165,7 @@ export default {
     },
     onChange() {
       if (this.cell) {
+        this.cell.fill = this.color
         this.cell.width = this.size.width
         this.cell.height = this.size.height
         this.cell.opacity = this.opacity
