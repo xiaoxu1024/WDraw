@@ -1,20 +1,26 @@
 export const ShapeType = {
   Rect: 'Rect',
-  Circle: 'Circle'
+  Circle: 'Circle',
+  Ellipse: 'Ellipse',
+  Polygon: 'Polygon',
+  Star: 'Star',
 }
 
 export const ShapeArr = [
   {
     id: ShapeType.Rect,
-    style: { borderRadius: 0 },
   },
   {
     id: ShapeType.Circle,
-    style: { borderRadius: '100%' },
   },
   {
-    id: ShapeType.Circle + '1',
-    style: { borderRadius: '100% 0 0' },
+    id: ShapeType.Ellipse,
+  },
+  {
+    id: ShapeType.Polygon,
+  },
+  {
+    id: ShapeType.Star,
   },
 ]
 

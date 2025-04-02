@@ -8,18 +8,6 @@
             <ColorBar v-model="color" @change="onChange" />
           </Layout>
 
-          <!-- 形状 -->
-          <Layout title="形状">
-            <div class="row_wrap">
-              <div
-                class="sidebar_shape"
-                v-for="item in ShapeArr"
-                :style="item.style"
-                :key="item.id"
-              ></div>
-            </div>
-          </Layout>
-
           <!-- 大小 -->
           <Layout title="尺寸">
             <WInput
@@ -62,7 +50,7 @@
 </template>
 
 <script>
-import { ShapeArr, SizeArr, ColorArr } from '@/lib/attrConfig'
+import { SizeArr, ColorArr } from '@/lib/attrConfig'
 import Layout from '@/components/layout.vue'
 import WInput from '@/components/input.vue'
 import ColorBar from '@/components/colorBar.vue'
@@ -81,7 +69,6 @@ export default {
   data() {
     return {
       ColorArr,
-      ShapeArr,
       SizeArr,
       color: '',
       opacity: 1,
@@ -183,11 +170,6 @@ export default {
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-}
-.sidebar_shape {
-  width: 32px;
-  height: 32px;
-  background: red;
 }
 
 .sidebar_size {
